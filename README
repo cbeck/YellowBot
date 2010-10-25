@@ -1,0 +1,32 @@
+This is the YellowBot integration project for LocationMonitor, a UBL project.
+
+Please keep the files for the web app in the web directory. Feel free to organize how you see fit. 
+
+I will add the project requirements as I learn them, but basically the whole project is pretty simple. It consists of four things:
+
+1) Some fairly static HTML pages
+2) A simple user signup and management system
+3) Acceptance of user payments via the Cybersource gateway
+4) Passing on the user data via an API to YellowBot
+
+Once a user signs up, all further interaction is actually on a branded YellowBot page. The API for YellowBot is under the docs folder.
+
+Demo server FTP info:
+
+FTP Username: yellowbot@thirddayweb.com
+FTP Server: ftp.thirddayweb.com
+FTP Server Port: 21
+
+See me for the pw.
+
+Here is the mysql database setup:
+
+db_name: thirdday_yb
+db_user: thirdday_yellow
+
+Again, I will give you the pw.
+
+
+You can view the site at yellowbot.thirddayweb.com.
+
+Let me know if there are any specific php packages you want installed.
