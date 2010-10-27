@@ -1,4 +1,6 @@
 body {background: #5d93cb url(../images/bg-body.png) repeat-x top left;}
+a {text-decoration: none; color: #000;}
+a:hover {text-decoration: underline;}
 
 .center {
   margin: 0 auto;
@@ -26,6 +28,10 @@ h1#logo {
   color: #4769c5;
   font-size: 15px;
   margin: -15px 0 0 10px;
+}
+
+#nav_primary a {
+  color: #4769c5;
 }
 
 #registration {
