@@ -9,7 +9,7 @@
     <div id="splash" class="container_12">
       <div class="grid_6">
         <img src="images/what-are-they-saying.png"/>
-        <div class="center"><a href="#"><img src="images/btn-find-out.png"/></a></div>
+        <div class="center"><a href="signup.php"><img src="images/btn-find-out.png"/></a></div>
       </div>
       <div class="grid_6"></div>
     </div>
