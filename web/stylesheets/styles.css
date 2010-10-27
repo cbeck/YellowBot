@@ -1,0 +1,59 @@
+body {background: #5d93cb url(../images/bg-body.png) repeat-x top left;}
+
+#canvas {
+  min-height: 1000px;
+}
+#header {
+  background: #fff url(../images/bg-header.png) no-repeat top left;
+  height: 84px;
+  padding: 20px;
+}
+
+h1#logo {
+  background: transparent url(../images/logo.png) no-repeat top left;
+  text-indent: -999px;
+  height: 60px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+
+#nav_primary { 
+  color: #4769c5;
+  font-size: 15px;
+  margin: -15px 0 0 10px;
+}
+
+#registration {
+  margin-top: 20px;
+}
+
+#registration li, #nav_secondary li {
+  margin: 0 0 0 10px;
+  float: right;
+}
+
+#splash {
+  background: #fff url(../images/bg-splash.jpg) no-repeat top left;
+  height: 257px;
+  padding: 20px;
+}
+
+#main {
+  background-color: #fff;
+  min-height: 300px;
+  padding: 20px;
+}
+
+#footer {
+  padding: 20px;
+  background: transparent url(../images/bg-footer.png) no-repeat bottom left;
+  height: 60px;
+}
+
+#copyright, #nav_secondary {
+  margin-top: 40px;
+}
+
+
+ul.navigation {list-style: none;}
+ul.navigation li {float: left; margin: 0px 20px 0px 0px;}
