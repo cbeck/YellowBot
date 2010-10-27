@@ -1,5 +1,10 @@
 body {background: #5d93cb url(../images/bg-body.png) repeat-x top left;}
 
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
 #canvas {
   min-height: 1000px;
 }
@@ -38,6 +43,14 @@ h1#logo {
   padding: 20px;
 }
 
+#splash img {
+  margin-left:20px;
+}
+
+#splash div.center {
+  margin-top: 10px;
+}
+
 #main {
   background-color: #fff;
   min-height: 300px;
@@ -57,3 +70,5 @@ h1#logo {
 
 ul.navigation {list-style: none;}
 ul.navigation li {float: left; margin: 0px 20px 0px 0px;}
+
+
