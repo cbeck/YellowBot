@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://dev.jcbarry.com/yellowbot/web/";
+$config['base_url']	= "http://yellowbot.jcbarry.com";
 
 /*
 |--------------------------------------------------------------------------
