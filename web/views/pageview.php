@@ -1,3 +1,3 @@
 <?php
-include($uri.'.php');
+include('static/'.$uri.'.php');
 ?>

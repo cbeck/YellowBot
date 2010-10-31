@@ -1,11 +1,11 @@
 <html>
 <head>
   <title>LocationMonitor.com</title>
-  <?php include("includes/doc_head.inc"); ?>
+  <?php include(dirname(__FILE__)."/../includes/doc_head.inc"); ?>
 </head>
 <body>
   <div id="canvas" class="container_12">
-    <?php include("includes/header.inc"); ?>
+    <?php include(dirname(__FILE__)."/../includes/header.inc"); ?>
     <div id="splash" class="container_12">
       <div class="grid_6">
         <img src="../assets/images/what-are-they-saying.png"/>
@@ -18,7 +18,7 @@
       <div class="content_box"></div>
       <div class="content_box"></div>
     </div>
-    <?php include("includes/footer.inc"); ?>  
+    <?php include(dirname(__FILE__)."/../includes/footer.inc"); ?>  
   </div>
 </body>
 </html>
