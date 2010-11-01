@@ -4,9 +4,23 @@ class AdminModel extends Model {
 		parent::Model();
 	}
 	
+	function get_admin_by_id($id) {
+		$query = $this->db->get_where('admin', array('id' => $id), 1);
+		return $query->result();
+	}
+	
 	function get_admins() {
 		$query = $this->db->get('admin');
 		return $query->result();
+	}
+	
+	function insert_admin($data) {
+		$this->db->insert('admin', $data);
+	}
+	
+	function delete_admin($id) {
+		$this->db->where('id', $id);
+		$this->db->delete('admin');
 	}
 	
 	function authenticate_admin($username, $password) {
@@ -16,12 +30,6 @@ class AdminModel extends Model {
 		} else {
 			return false;
 		}
-	}
-	
-	function insert_admin($username, $password) {
-		$this->db->set('username', $username);
-		$this->db->set('datetime', 'md5($password)');
-		$this->db->insert('admin');
 	}		
 }
 ?>
