@@ -14,7 +14,7 @@
   			<h5>Password</h5>
   			<input type="password" name="password" value="" />
   			<input type="submit" value="Submit" />
-  		</form>
+  		<?= form_close(); ?>
     </div>
     <?php include("includes/footer.inc"); ?>  
   </div>

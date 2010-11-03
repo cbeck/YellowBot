@@ -25,8 +25,6 @@
           <td><?= $user_row->address1.'<br />'.$user_row->address2.'<br />'.$user_row->city.', '.$user_row->state.' '.$user_row->zip ?></td>
           <td>
           <?= anchor('user/remove/'.$user_row->id, 'Delete', 'title="Delete"'); ?>
-          |
-          <?= anchor('user/modify/'.$user_row->id, 'Modify', 'title="Modify"'); ?>
           </td>
         </tr>
       <?php endforeach; ?>
