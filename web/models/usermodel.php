@@ -31,10 +31,24 @@ class UserModel extends Model {
 	function delete_user($id) {
 		$this->db->where('id', $id);
 		$this->db->delete('user');
-	}
-
-//Protected API Calls...
-
-
+  }
+  
+  function user_exists($email) {
+    $query = $this->db->get_where('user', array('email' => $email), 1);
+    if($query->num_rows() > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  function authenticate_user($email, $password) {
+    $query = $this->db->get_where('user', array('email' => $email,'password' => md5($password)));
+    if($query->num_rows() > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  } 
 }
 ?>
