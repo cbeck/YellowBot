@@ -4,9 +4,9 @@
     <h1 id="logo">LocationMonitor.com</h1>
     <div id="nav_primary">
       <ul class="navigation">
-        <li id="services"><a href="/pages/services">Services</a></li>
+        <li id="services"><a href="/pages/features">Features</a></li>
         <li class="separator">|</li>
-        <li id="list"><a href="/pages/list">List your business</a></li>
+        <li id="list"><a href="/user/signup">Monitor your business</a></li>
         <li class="separator">|</li>
         <li id="partner"><a href="/pages/partner">Partner programs</a></li>
         <li class="separator">|</li>

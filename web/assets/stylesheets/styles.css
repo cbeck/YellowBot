@@ -7,6 +7,8 @@ a:hover {text-decoration: underline;}
   text-align: center;
 }
 
+.pad_top_20 { padding-top: 20px;}
+
 #canvas {
   min-height: 1000px;
 }
@@ -38,7 +40,7 @@ h1#logo {
   margin-top: 20px;
 }
 
-#registration li, #nav_secondary li {
+#registration li {
   margin: 0 0 0 10px;
   float: right;
 }
@@ -69,12 +71,16 @@ h1#logo {
   height: 60px;
 }
 
-#copyright, #nav_secondary {
+#nav_secondary {
   margin-top: 40px;
+}
+#copyright {
+  margin-top: 20px;
+  color: #fff;
 }
 
 
 ul.navigation {list-style: none;}
-ul.navigation li {float: left; margin: 0px 20px 0px 0px;}
+ul.navigation li, #nav_secondary li {float: left; margin: 0px 10px 0px 0px;}
 
 
