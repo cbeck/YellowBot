@@ -12,6 +12,15 @@ a:hover {text-decoration: underline;}
 #canvas {
   min-height: 1000px;
 }
+
+#main a {
+  text-decoration: underline;
+}
+
+#main a:hover {
+  color: #4769c5;
+}
+
 #header {
   background: #fff url(../images/bg-header.png) no-repeat top left;
   height: 84px;

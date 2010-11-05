@@ -8,10 +8,10 @@
     <?php include("includes/header.inc"); ?>
     <div id="main" class="container_12">
       <h2>Sign up</h2>
-      <div class="grid_6 suffix_6">
       <?= validation_errors(); ?>
       <?php $attributes = array('class' => 'jqtransform', 'id' => 'signup_form'); ?>
       <?= form_open('user/signup', $attributes); ?>
+      <div class="grid_6 alpha">
       <fieldset>
         <legend>About You</legend>
         <div class="rowElem">
@@ -27,6 +27,12 @@
         <label>Password Confirmation</label><input type="password" name="passwordconf" value="" />
         </div>
       </fieldset>
+      </div>
+      <div class="grid_6 omega pad_top_20">
+        <p>This will be the account holder information for any one or multiple businesses monitored through this profile. We will not use this information for anything other than LocationMonitor.com communications. It will not be sold to marketers or used for delivery of advertising.</p>
+      </div>
+      <div class="clear"></div>
+      <div class="grid_6 alpha">
       <fieldset>
         <legend>About Your Business</legend>
         <div class="rowElem">
@@ -51,6 +57,12 @@
         <label>Phone:</label><input type="text" name="phone" value="<?= set_value('phone'); ?>" />
         </div>
        </fieldset>
+       </div>
+       <div class="grid_6 omega pad_top_20">
+         <p>This does not have to be the business you wish to track, but will be an assumed option for one. You will be able to add other businesses through this account.</p>
+       </div>
+       <div class="clear"></div>
+       <div class="grid_6 alpha">
        <fieldset>
          <legend>Payment Information</legend>
          <div class="rowElem">
@@ -73,12 +85,17 @@
         </div>
        </fieldset> 
         <input type="submit" value="Submit" />
-      <?= form_close(); ?>
+      </div>
+      <div class="grid_6 omega pad_top_20">
+        <p>Your card will be billed quarterly in advance. You may cancel any time and delete this account. Your information is not stored by us but by our merchant processor, CyberSource, with high level security.</p>
       </div>
       <div class="clear"></div>
-    </div>
+      <?= form_close(); ?>
+      </div>      
+      <div class="clear"></div>
     <?php include("includes/footer.inc"); ?>  
   </div>
+  
   <script type="text/javascript">
   $(function() {
       //find all form with class jqtransform and apply the plugin
