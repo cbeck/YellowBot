@@ -79,6 +79,10 @@ h1#logo {
   color: #fff;
 }
 
+label { width: 150px;}
+fieldset { border: 1px solid #ccc; background-color: #f4f7ff; padding: 10px; border-radius: 5px; -moz-border-radius: 5px;}
+legend { background-color: #ccc; padding: 5px; border-radius: 5px; -moz-border-radius: 5px; font-weight: bold;}
+
 
 ul.navigation {list-style: none;}
 ul.navigation li, #nav_secondary li {float: left; margin: 0px 10px 0px 0px;}
