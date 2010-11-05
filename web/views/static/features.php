@@ -7,6 +7,7 @@
   <div id="canvas" class="container_12">
     <?php include(dirname(__FILE__)."/../includes/header.inc"); ?>
     <div id="main" class="container_12">
+      <h1>NOTE: THIS PAGE IS STILL IN DEVELOPMENT - ADDING TABS AND IMAGES - CHECK BACK ON SAT.</h1>
       <h2>Features</h2>
       <h5>Overview</h5>
       <p>Get an executive summary of your web presence and reputation. Use this page as an entry point to quickly navigate to other sections.</p>
