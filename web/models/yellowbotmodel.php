@@ -30,7 +30,7 @@ class YellowbotModel extends Model {
   }
   
   ///api/reputation_management/register_location
-  function repman_register_location($data) {
+  function repman_register_location_by_data($data) {
     $operation = "/api/reputation_management/register_location?";
     $query = array(
       "api_key" => $this->api_key,      
@@ -48,12 +48,25 @@ class YellowbotModel extends Model {
     return $this->curl_request($query_string, $operation);    
   }
   
+  function repman_register_location_by_id($business_name, $email, $location) {
+    $operation = "/api/reputation_management/register_location?";
+    $query = array(
+      "api_key" => $this->api_key,      
+      "name" => $business_name,
+      "location" => $location,
+      "api_ts" => time(),
+      "api_user_identifier" => md5($email));
+     
+    $query_string = $this->generate_query($query).$this->generate_sig($query); 
+    return $this->curl_request($query_string, $operation);   
+  }
+  
   ///api/reputation_management/update_location
   function repman_update_location($data, $location_id) {
     $operation = "/api/reputation_management/update_location?";
     $query = array(
       "api_key" => $this->api_key,
-      "location_id" => $location_id,      
+      "location" => $location_id,      
       "name" => $data['name'],
       "address" => $data['address1'].' '.$data['address2'],
       "city_name" => $data['city_name'],
@@ -69,11 +82,11 @@ class YellowbotModel extends Model {
   }  
   
   ///api/reputation_management/unregister_location
-  function repman_unregister_location($location_id) {
-    $operation = "/api/search/locations?";
+  function repman_unregister_location($email, $location_id) {
+    $operation = "/api/reputation_management/unregister_location?";
     $query = array(
       "api_key" => $this->api_key,
-      "location_id" => $location_id,
+      "location" => $location_id,
       "api_ts" => time(),
       "api_user_identifier" => md5($email));
     
@@ -89,7 +102,7 @@ class YellowbotModel extends Model {
       "q" => $phone);
      
     $query_string = $this->generate_query($query).$this->generate_sig($query); 
-    return $this->curl_request($query_string, $operation);    
+    return $this->curl_request($query_string, $operation, FALSE);    
   }
   
   function repman_list_locations($email) {
@@ -117,11 +130,23 @@ class YellowbotModel extends Model {
   }   
   
   //Protected utility functions
-  protected function curl_request($query, $operation) {    
+  protected function curl_request($query, $operation, $validate = TRUE) {    
     $curl_url = $this->base_url.$operation.$query;    
     curl_setopt($this->ch, CURLOPT_URL, $curl_url); 
-    $response = curl_exec($this->ch);    
-    return $this->response_parse($response);
+    $response = curl_exec($this->ch);
+    if($validate) {
+      return $this->validate_response($this->response_parse($response));
+    } else {
+      return $this->response_parse($response);
+    }
+  }
+  
+  protected function validate_response($response) {
+    if(isset($response['ok']) && $response['ok'] == "ok") {
+      return true;
+    } else {
+      return false;
+    }
   }
   
   protected function generate_query($data) {
