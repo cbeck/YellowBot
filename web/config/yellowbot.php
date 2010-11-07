@@ -8,3 +8,6 @@ $config['api_secret'] = "f89d48e031440891";
 $config['payment_service_url'] =  "https://qa.ubl.org/Payment.svc";
 //Payment Processing Service WSDL
 $config['payment_service_wsdl'] = "https://qa.ubl.org/Payment.svc?wsdl";
+
+//Default Price
+$config['default_price'] = '1.99';
