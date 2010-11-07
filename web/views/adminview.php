@@ -22,7 +22,7 @@
         <tr>
           <td><?= $user_row->name ?></td>
           <td><?= $user_row->email ?></td>
-          <td><?= $user_row->address1.'<br />'.$user_row->address2.'<br />'.$user_row->city.', '.$user_row->state.' '.$user_row->zip ?></td>
+          <td><?= $user_row->address1.' '.$user_row->address2.'<br />'.$user_row->city.', '.$user_row->state.' '.$user_row->zip ?></td>
           <td>
           <?= anchor('user/remove/'.$user_row->id, 'Delete', 'title="Delete"'); ?>
           </td>
@@ -30,6 +30,30 @@
       <?php endforeach; ?>
       </tbody>
     </table>
+    <h2>Users with unregistered businesses</h2>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Address</td>
+          <td>&nbsp;</td>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach($user_unregistered_table as $user_row): ?>
+        <tr>
+          <td><?= $user_row->name ?></td>
+          <td><?= $user_row->email ?></td>
+          <td><?= $user_row->address1.' '.$user_row->address2.'<br />'.$user_row->city.', '.$user_row->state.' '.$user_row->zip ?></td>
+          <td>
+          <?= anchor('user/remove/'.$user_row->id, 'Delete', 'title="Delete"'); ?>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+      </tbody>
+    </table>    
+    <hr />
     <h2>Admins</h2>
     <table>
       <thead>
@@ -46,7 +70,7 @@
         </tr>
       <?php endforeach; ?>
       </tbody>
-    </table>
+    </table>    
     <?php echo validation_errors(); ?>
     <?php echo form_open('admin/add'); ?>
       <h5>Username</h5>
