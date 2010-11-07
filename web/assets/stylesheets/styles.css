@@ -83,10 +83,27 @@ h1#logo {
 #nav_secondary {
   margin-top: 40px;
 }
+
 #copyright {
   margin-top: 20px;
   color: #fff;
 }
+
+#tabs {
+  margin-bottom: 15px;
+}
+
+#tabs a {
+  text-decoration: none;
+}
+
+#tabs a:hover {
+  color: #000;
+}
+
+.tabs img { margin-right: 40px;}
+.tabs ul { padding-top: 20px;}
+.tabs li { margin-bottom: 20px;}
 
 label { width: 150px;}
 fieldset { border: 1px solid #ccc; background-color: #f4f7ff; padding: 10px; border-radius: 5px; -moz-border-radius: 5px;}
