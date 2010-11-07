@@ -11,7 +11,8 @@ class Admin extends Controller {
     
     $this->view_data = array(
         'admin_table' => $this->AdminModel->get_admins(),
-        'user_table' => $this->UserModel->get_users());   
+        'user_table' => $this->UserModel->get_users(),
+        'user_unregistered_table' => $this->UserModel->get_unregistered_users());   
   }
   
   function index() {
