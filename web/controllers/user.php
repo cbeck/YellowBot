@@ -53,7 +53,7 @@ class User extends Controller {
         "FourDigitYear" => $this->input->post('cc_exp_year'),
         "ClientIP" => $this->input->ip_address());
       // initiate payment request
-      $payment_result = $this->PaymentModel->process_payment($payment);
+      //$payment_result = $this->PaymentModel->process_payment($payment);
       // if payment succeeds
       // we can't handle payments yet
       // if($payment_result != FALSE) {
