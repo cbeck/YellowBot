@@ -105,6 +105,15 @@ class YellowbotModel extends Model {
     return $this->curl_request($query_string, $operation, FALSE);    
   }
   
+  function repman_location_exists($zip, $phone) {
+    $result = $this->repman_search_locations($zip, $phone);
+    if(empty($result['locations'])) {
+      return false;
+    } else {
+      return $result['locations'][0]; 
+    }
+  }
+  
   function repman_list_locations($email) {
     $operation = "/api/reputation_management/list_locations?";
     $query = array(

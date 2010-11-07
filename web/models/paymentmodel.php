@@ -13,8 +13,12 @@ class PaymentModel extends Model {
   }
   
   function process_payment($data) {
-    $result = $this->soap_client->ProcessPayment($this->generate_request($data));
-    return $this->validate_response($result); 
+    try {
+      $result = $this->soap_client->ProcessPayment($this->generate_request($data));
+      return $this->validate_response($result);
+    } catch (SoapFault $exception) {
+      return false;
+    }   
   }
   
   protected function generate_request($ary) {

@@ -18,6 +18,11 @@ class UserModel extends Model {
 		$query = $this->db->get('user');
 		return $query->result();
 	}
+  
+  function get_unregistered_users() {
+    $query = $this->db->get_where('user', array('registered_business' => 0));
+    return $query->result();
+  }
 	
 	function add_user($data) {
 		$this->db->insert('user', $data);
