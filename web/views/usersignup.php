@@ -39,10 +39,10 @@
         <label>Business Name:</label><input type="text" name="business_name" value="<?= set_value('business_name'); ?>" />
         </div>
         <div class="rowElem">
-        <label>Address:</label><input type="text" name="address1" value="<?= set_value('address1'); ?>" />
+        <label>Address Line 1:</label><input type="text" name="address1" value="<?= set_value('address1'); ?>" />
         </div>  
         <div class="rowElem">
-        <label>Address:</label><input type="text" name="address2" value="<?= set_value('address2'); ?>" />
+        <label>Address Line 2:</label><input type="text" name="address2" value="<?= set_value('address2'); ?>" />
         </div>
         <div class="rowElem">
         <label>City:</label><input type="text" name="city" value="<?= set_value('city'); ?>" />
@@ -69,19 +69,47 @@
         <label>Name on Card:</label><input type="text" name="cc_name" value="<?= set_value('cc_name'); ?>" />
         </div>
         <div class="rowElem">
-        <label>Type:</label><input type="text" name="cc_type" value="<?= set_value('cc_type'); ?>" />
+          <label>Type:</label>  
+          <select name="cc_type">
+            <option value="001">Visa</option>
+            <option value="002">MasterCard</option>
+            <option value="003">American Express</option>
+            <option value="004">Discover</option>
+          </select>
         </div>
         <div class="rowElem">
         <label>Credit Card #:</label><input type="text" name="cc_num" value="<?= set_value('cc_num'); ?>" />
         </div>   
         <div class="rowElem">    
-        <label>Expiration Month:</label><input type="text" name="cc_exp_month" value="<?= set_value('cc_exp_month'); ?>" />
+          <label>Expiration:</label>  
+          <select name="cc_exp_month">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <select name="cc_exp_year">
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+          </select>
         </div>
         <div class="rowElem">
-        <label>Expiration Year:</label><input type="text" name="cc_exp_year" value="<?= set_value('cc_exp_year'); ?>" />
-        </div>
-        <div class="rowElem">
-        <label>CVV:</label><input type="text" name="cc_cvv" value="" />
+        <label>CVV:</label><input type="text" name="cc_cvv" value="" size="4"/>
         </div>
        </fieldset> 
         <input type="submit" value="Submit" />

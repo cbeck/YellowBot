@@ -133,6 +133,14 @@ h1#logo {
 .tabs ul { padding-top: 20px;}
 .tabs li { margin-bottom: 20px;}
 
+#main .jqTransformSelectWrapper li a {
+  text-decoration: none;
+}
+
+#main .jqTransformSelectWrapper li a:hover {
+  color: #fff;
+}
+
 label { width: 150px;}
 fieldset { border: 1px solid #ccc; background-color: #f4f7ff; padding: 10px; border-radius: 5px; -moz-border-radius: 5px;}
 legend { background-color: #ccc; padding: 5px; border-radius: 5px; -moz-border-radius: 5px; font-weight: bold;}
