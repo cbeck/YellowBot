@@ -132,13 +132,5 @@ class User extends Controller {
       }     
     }
   }
-  
-  function locations() {
-    print_r($this->YellowbotModel->repman_list_locations("test009@jcbarry.com"));
-  }
-  
-  function searchtest() {
-    print_r($this->YellowbotModel->repman_search_locations("28210", "7043759715"));
-  }
 }
 ?>
