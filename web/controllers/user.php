@@ -36,7 +36,7 @@ class User extends Controller {
       $this->load->view('usersignup');
     } else {
       // setup payment request
-      $name = explode(' ', $this->input->post('name'), 2);
+      $name = explode(' ', $this->input->post('cc_name'), 2);
       $payment = array(
         "FirstName" => $name[0],
         "LastName" => $name[1],
@@ -45,19 +45,19 @@ class User extends Controller {
         "City" => $this->input->post('city'),
         "State" => $this->input->post('state'),
         "ZipCode" => $this->input->post('zip'),
-        "Price" => $this->config->item('default_price'),
+        "Price" => '$'.$this->config->item('default_price'),
+        "Frequency" => $this->PaymentModel->calculate_frequency($this->config->item('default_frequency')),
         "CardNumber" => $this->input->post('cc_num'),
         "CcvCode" => $this->input->post('cc_cvv'),
         "Country" => "United States",
-        "TwoDigitMonth" => $this->input->post('cc_exp_month'),
-        "FourDigitYear" => $this->input->post('cc_exp_year'),
-        "ClientIP" => $this->input->ip_address());
+        "Month" => $this->input->post('cc_exp_month'),
+        "Year" => $this->input->post('cc_exp_year'),
+        "ClientIP" => $this->input->ip_address());    
       // initiate payment request
-      //$payment_result = $this->PaymentModel->process_payment($payment);
+      $payment_result = $this->PaymentModel->process_payment($payment);
+     
       // if payment succeeds
-      // we can't handle payments yet
-      // if($payment_result != FALSE) {
-      if(TRUE) {
+      if($payment_result['Status'] == "Successful") {
         $registered_business = 0;
         // if user isn't already registered internally 
         if(!$this->UserModel->user_exists($this->input->post('email'))) {
@@ -90,13 +90,14 @@ class User extends Controller {
             "cc_exp" => $this->input->post('cc_exp_month').'-'.$this->input->post('cc_exp_year'),
             "cc_name" => $this->input->post('cc_name'),
             "cc_cvv" => $this->input->post('cc_cvv'),
-            "payment_key" => $payment_result,
+            "payment_key" => $payment_result['Details'],
             "yellowbot_user_identifier" => md5($this->input->post('email')),
             "cost" => $this->config->item('default_price'),
-            "registered_business" => $registered_business);
+            "registered_business" => $registered_business,
+            "recurring_frequency" => $this->config->item('default_frequency'));
           $this->UserModel->add_user($db_data);
-          $this->session->set_flashdata('success', 'User account created, please login.');
-          $this->load->view('userlogin');
+          $data['success'] = 'Payment processed with confirmation number: '.$payment_result['Details'].'<br />User account created, please login.';
+          $this->load->view('userlogin', $data);
             
           } else {
             $this->form_validation->_error_array[] = "This email address already appears to be registered.";
@@ -107,7 +108,7 @@ class User extends Controller {
           $this->load->view('usersignup');
         }
       } else {
-        $this->form_validation->_error_array[] = "There was a problem processing your payment.";
+        $this->form_validation->_error_array[] = "There was a problem processing your payment: ".$payment_result['Details'];;
         $this->load->view('usersignup');
       }                  
     }
@@ -130,6 +131,14 @@ class User extends Controller {
         $this->load->view('userlogin');
       }     
     }
+  }
+  
+  function locations() {
+    print_r($this->YellowbotModel->repman_list_locations("test009@jcbarry.com"));
+  }
+  
+  function searchtest() {
+    print_r($this->YellowbotModel->repman_search_locations("28210", "7043759715"));
   }
 }
 ?>
