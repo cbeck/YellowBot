@@ -101,7 +101,7 @@ h1#logo {
   color: #000;
 }
 
-.tabs img { margin-right: 40px;}
+.tabs img { float:left; margin-right: 40px;}
 .tabs ul { padding-top: 20px;}
 .tabs li { margin-bottom: 20px;}
 
