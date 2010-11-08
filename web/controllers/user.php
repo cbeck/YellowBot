@@ -119,7 +119,6 @@ class User extends Controller {
     $this->form_validation->set_rules('password', 'Password', 'required');
       
     if ($this->form_validation->run() == FALSE) {
-      $data['success'] = "";
       $this->load->view('userlogin', $data);
     } else {
       $email = $this->input->post('email');

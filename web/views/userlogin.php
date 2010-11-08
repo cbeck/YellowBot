@@ -29,7 +29,7 @@
         <?= form_close(); ?>
       </div>
       <div class="grid_6 omega">
-        <p><?= $success ?></p>
+        <p><?= $success = (isset($success))? $success: ''; ?></p>
         <p><strong>Welcome back!</strong></p>
         <p>If this is your first visit to the site, you will need to <a href="/user/signup">Sign Up</a> to create an account.</p>
       </div>
