@@ -7,18 +7,44 @@
   <div id="canvas" class="container_12">
     <?php include(dirname(__FILE__)."/../includes/header.inc"); ?>
     <div id="main" class="container_12">
-      <h1>NOTE: THIS PAGE IS STILL IN DEVELOPMENT - ADDING TABS AND IMAGES - CHECK BACK ON SAT.</h1>
       <h2>Features</h2>
-      <h5>Overview</h5>
-      <p>Get an executive summary of your web presence and reputation. Use this page as an entry point to quickly navigate to other sections.</p>
-      <h5>Visibility</h5>
-      <p>There's a lot of bad data out there. Manage your web presence and enhance your search engine optimization by finding and correcting inaccurate listings across the web.</p>
-      <h5>Reviews</h5>
-      <p>Save time by viewing reviews from all across the web. Plus, you get the tools to share and respond to those reviews – all in one place.</p>
-      <h5>Mentions</h5>
-      <p>Reviews are not the only way people talk about a business - there is also tweeting, sharing photos, and "checking in". Manage information overload with a single page to quickly see everything that is being said about your business.</p>
-      <h5>Competitors</h5>
-      <p>Put reviews and mentions into perspective: see how your online reputation compares to your  direct competitors.</p>
+      <div id="tabs">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#visibility">Visibility</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#mentions">Mentions</a></li>
+          <li><a href="#competitors">Competitors</a></li>
+        </ul>
+        <div id="overview" class="tabs">
+          <p>Get an executive summary of your web presence and reputation. Use this page as an entry point to quickly navigate to other sections.</p>
+            <img src="../assets/images/Locationmonitor_Overview.jpg" style="float:left;"/>         
+            <ul>
+              <li>See at a glance how many listings exist, and how many may have bad data. Find out if the business has missing or duplicated listings on top-tier sites.</li>
+              <li>Gauge the overall ratings and popularity of a business on review sites.</li>
+              <li>No need to read every single review -- "The Buzz" provides a summary sentiment analysis of users"" opinions.</li>
+              <li>Consumers aren't just writing reviews. "The Social Hub" tracks photos, tweets, and other mentions on social networks.</li>
+            </ul>
+            <div class="clear"></div>          
+        </div>
+        <div id="visibility" class="tabs"> 
+          <p>There's a lot of bad data out there. Manage your web presence and enhance your search engine optimization by finding and correcting inaccurate listings across the web.</p>
+          <img src="../assets/images/Locationmonitor_Visibility.jpg"/>
+        </div>
+        <div id="reviews" class="tabs">  
+          <p>Save time by viewing reviews from all across the web. Plus, you get the tools to share and respond to those reviews – all in one place.</p>
+          <img src="../assets/images/Locationmonitor_Reviews.jpg"/>
+        </div>
+        <div id="mentions" class="tabs">
+          <p>Reviews are not the only way people talk about a business - there is also tweeting, sharing photos, and "checking in". Manage information overload with a single page to quickly see everything that is being said about your business.</p>
+          <img src="../assets/images/Locationmonitor_Mentions.jpg"/>
+        </div>
+        <div id="competitors" class="tabs">
+          <p>Put reviews and mentions into perspective: see how your online reputation compares to your  direct competitors.</p>
+          <img src="../assets/images/Locationmonitor_Competitors.jpg"/>
+          <img src="../assets/images/Locationmonitor_Competitors_2.jpg"/>
+        </div>
+      </div>
       
       <h3>What are the benefits of Reputation and Presence Management System?</h3>
       <ul>
@@ -35,5 +61,10 @@
     </div>
     <?php include(dirname(__FILE__)."/../includes/footer.inc"); ?>  
   </div>
+  <script>
+  	$(function() {
+  		$( "#tabs" ).tabs();
+  	});
+  </script>
 </body>
 </html>
