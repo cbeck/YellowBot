@@ -5,7 +5,7 @@ $config['api_key'] = "c7cbf3afd2cedd3c69cd091a8f2e7347";
 $config['api_secret'] = "66f4cdbbd65cb13a";
 
 //Payment Processing Service URL
-$config['payment_service_url'] =  "https://qa.ubl.org/payment.svc";
+$config['payment_service_url'] =  "https://www.ubl.org/payment.svc";
 
 //Default Price
 $config['default_price'] = '1.99';
