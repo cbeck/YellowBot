@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2010 at 10:51 PM
+-- Generation Time: Nov 07, 2010 at 08:33 PM
 -- Server version: 5.0.70
 -- PHP Version: 5.2.9-pl2-gentoo
 
@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `yellowbot_user_identifier` text NOT NULL,
   `signup_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `cost` decimal(10,2) NOT NULL,
+  `recurring_frequency` int(11) NOT NULL,
   `registered_business` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;

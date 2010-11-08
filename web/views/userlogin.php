@@ -10,7 +10,6 @@
       
       <h3>Login</h3>
       <?= validation_errors(); ?>
-      <h5><?= $this->session->flashdata('success'); ?></h5>
       <div class="grid_6 alpha">
         <?php $attributes = array('class' => 'jqtransform', 'id' => 'login_form'); ?>
         <?= form_open('user/login', $attributes); ?>
@@ -30,6 +29,7 @@
         <?= form_close(); ?>
       </div>
       <div class="grid_6 omega">
+        <p><?= $success ?></p>
         <p><strong>Welcome back!</strong></p>
         <p>If this is your first visit to the site, you will need to <a href="/user/signup">Sign Up</a> to create an account.</p>
       </div>
