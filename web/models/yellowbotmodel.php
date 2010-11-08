@@ -7,7 +7,7 @@ class YellowbotModel extends Model {
   
   function YellowbotModel() {
     parent::Model();
-    $this->base_url = "http://rep.ubl.org";
+    $this->base_url = "http://rep.locationmonitor.com";
     $this->api_key = $this->config->item('api_key');
     $this->api_secret = $this->config->item('api_secret');
     
@@ -122,7 +122,7 @@ class YellowbotModel extends Model {
       "api_user_identifier" => md5($email));
      
     $query_string = $this->generate_query($query).$this->generate_sig($query); 
-    return $this->curl_request($query_string, $operation); 
+    return $this->curl_request($query_string, $operation, FALSE); 
     
   }
   
