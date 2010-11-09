@@ -47,6 +47,15 @@ class UserModel extends Model {
     }
   }
   
+  function user_has_unregistered_business($email) {
+    $query = $this->db->get_where('user', array('email' => $email,'registered_business' => 0));
+    if($query->num_rows() > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
   function authenticate_user($email, $password) {
     $query = $this->db->get_where('user', array('email' => $email,'password' => md5($password)));
     if($query->num_rows() > 0) {
@@ -54,6 +63,6 @@ class UserModel extends Model {
     } else {
       return false;
     }
-  } 
+  }  
 }
 ?>
