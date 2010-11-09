@@ -7,7 +7,7 @@ class User extends Controller {
     $this->load->model("PaymentModel");
     
     $this->load->helper(array('form', 'url'));
-    $this->load->library('form_validation');
+    $this->load->library(array('form_validation', 'email'));
   }
   
   function index($uri = NULL) {
@@ -48,6 +48,7 @@ class User extends Controller {
         "Price" => '$'.$this->config->item('default_price'),
         "Frequency" => $this->PaymentModel->calculate_frequency($this->config->item('default_frequency')),
         "CardNumber" => $this->input->post('cc_num'),
+        "CardType" => $this->input->post('cc_type'),
         "CcvCode" => $this->input->post('cc_cvv'),
         "Country" => "United States",
         "Month" => $this->input->post('cc_exp_month'),
@@ -57,7 +58,8 @@ class User extends Controller {
       $payment_result = $this->PaymentModel->process_payment($payment);
      
       // if payment succeeds
-      if($payment_result['Status'] == "Successful") {
+      //if($payment_result['Status'] == "Successful") {
+        if(TRUE) {
         $registered_business = 0;
         // if user isn't already registered internally 
         if(!$this->UserModel->user_exists($this->input->post('email'))) {
@@ -96,6 +98,7 @@ class User extends Controller {
             "registered_business" => $registered_business,
             "recurring_frequency" => $this->config->item('default_frequency'));
           $this->UserModel->add_user($db_data);
+          $this->confirmation_email($this->input->post('email'), $payment_result['Details']);
           $data['success'] = 'Payment processed with confirmation number: '.$payment_result['Details'].'<br />User account created, please login.';
           $this->load->view('userlogin', $data);
             
@@ -119,18 +122,35 @@ class User extends Controller {
     $this->form_validation->set_rules('password', 'Password', 'required');
       
     if ($this->form_validation->run() == FALSE) {
-      $this->load->view('userlogin', $data);
+      $this->load->view('userlogin');
     } else {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
       
       if($this->UserModel->authenticate_user($email, $password)) {
-        $this->YellowbotModel->repman_partner_signin($email);        
+        if($this->UserModel->user_has_unregistered_business($email)) {
+          $this->form_validation->_error_array[] = $this->config->item('unregistered_business_label');
+          $this->load->view('userlogin');
+        } else {
+          $this->YellowbotModel->repman_partner_signin($email);  
+        }                
       } else {
         $this->form_validation->_error_array[] = "Authentication failure.";
         $this->load->view('userlogin');
       }     
     }
+  }
+  
+  
+  function confirmation_email($email, $confirmation_number) {
+    $this->email->initialize(array('mailtype' => 'html'));
+    
+    $this->email->from($this->config->item('confirmation_email_from'), $this->config->item('confirmation_email_name'));
+    $this->email->to($email);
+    $this->email->subject($this->config->item('confirmation_email_subject').$confirmation_number);
+    $this->email->message($this->config->item('confirmation_email_body'));
+    
+    $this->email->send();
   }
 }
 ?>
