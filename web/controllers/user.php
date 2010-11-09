@@ -58,8 +58,7 @@ class User extends Controller {
       $payment_result = $this->PaymentModel->process_payment($payment);
      
       // if payment succeeds
-      //if($payment_result['Status'] == "Successful") {
-        if(TRUE) {
+      if($payment_result['Status'] == "Successful") {
         $registered_business = 0;
         // if user isn't already registered internally 
         if(!$this->UserModel->user_exists($this->input->post('email'))) {
