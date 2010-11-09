@@ -38,9 +38,9 @@ $active_group = "default";
 $active_record = TRUE;
 
 //$db['default']['hostname'] = "localhost";
-$db['default']['hostname'] = "127.0.0.1";
-$db['default']['username'] = "locationmonitor";
-$db['default']['password'] = "2wsx3edc";
+$db['default']['hostname'] = "192.168.1.2";
+$db['default']['username'] = "root";
+$db['default']['password'] = "ublorg10";
 $db['default']['database'] = "locationmonitor";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
