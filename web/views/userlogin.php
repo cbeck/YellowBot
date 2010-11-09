@@ -9,6 +9,7 @@
     <div id="main" class="container_12">
       
       <h3>Login</h3>
+      <p><?= $unregistered = (isset($unregistered))? $unregistered: ''; ?></p>
       <?= validation_errors(); ?>
       <div class="grid_6 alpha">
         <?php $attributes = array('class' => 'jqtransform', 'id' => 'login_form'); ?>

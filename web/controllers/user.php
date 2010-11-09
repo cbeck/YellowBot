@@ -99,6 +99,9 @@ class User extends Controller {
           $this->UserModel->add_user($db_data);
           $this->confirmation_email($this->input->post('email'), $payment_result['Details']);
           $data['success'] = 'Payment processed with confirmation number: '.$payment_result['Details'].'<br />User account created, please login.';
+          if($this->UserModel->user_has_unregistered_business($this->input->post('email'))) {
+            $data['unregistered'] = $this->config->item('unregistered_business_label');
+          }
           $this->load->view('userlogin', $data);
             
           } else {
@@ -127,12 +130,7 @@ class User extends Controller {
       $password = $this->input->post('password');
       
       if($this->UserModel->authenticate_user($email, $password)) {
-        if($this->UserModel->user_has_unregistered_business($email)) {
-          $this->form_validation->_error_array[] = $this->config->item('unregistered_business_label');
-          $this->load->view('userlogin');
-        } else {
-          $this->YellowbotModel->repman_partner_signin($email);  
-        }                
+        $this->YellowbotModel->repman_partner_signin($email);             
       } else {
         $this->form_validation->_error_array[] = "Authentication failure.";
         $this->load->view('userlogin');
