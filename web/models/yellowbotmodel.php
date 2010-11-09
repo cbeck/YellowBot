@@ -7,8 +7,7 @@ class YellowbotModel extends Model {
   
   function YellowbotModel() {
     parent::Model();
-    //$this->base_url = "http://rep.locationmonitor.com";
-    $this->base_url = "http://rep.ubl.org";
+    $this->base_url = $this->config->item('api_url');
     $this->api_key = $this->config->item('api_key');
     $this->api_secret = $this->config->item('api_secret');
     
