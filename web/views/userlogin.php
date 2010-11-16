@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>LocationMonitor.com - About us</title>
+  <title>LocationMonitor.com - Sign In</title>
   <?php include("includes/doc_head.inc"); ?>
 </head>
 <body>
