@@ -1,8 +1,11 @@
 <?php
 class User extends Controller {
+  var $view_data;
+  
   function __construct() {
     parent::Controller();
     $this->load->model("UserModel");
+    $this->load->model("BusinessModel");
     $this->load->model("YellowbotModel");
     $this->load->model("PaymentModel");
     
@@ -70,8 +73,6 @@ class User extends Controller {
               if(!$this->YellowbotModel->repman_register_location_by_id($location['name'], $this->input->post('email'), $location['uid'])) {  
                 $registered_business = 1;
               }  
-            } else {
-              //register a brand new business with YB             
             }
           
           //insert data into user db 
@@ -102,8 +103,7 @@ class User extends Controller {
           if($this->UserModel->user_has_unregistered_business($this->input->post('email'))) {
             $data['unregistered'] = $this->config->item('unregistered_business_label');
           }
-          $this->load->view('userlogin', $data);
-            
+          $this->load->view('userlogin', $data);            
           } else {
             $this->form_validation->_error_array[] = "This email address already appears to be registered.";
             $this->load->view('usersignup');
@@ -122,15 +122,16 @@ class User extends Controller {
   function login() {
     $this->form_validation->set_rules('email', 'Email', 'required');
     $this->form_validation->set_rules('password', 'Password', 'required');
-      
+    
     if ($this->form_validation->run() == FALSE) {
       $this->load->view('userlogin');
     } else {
       $email = $this->input->post('email');
-      $password = $this->input->post('password');
-      
+      $password = $this->input->post('password');      
       if($this->UserModel->authenticate_user($email, $password)) {
-        $this->YellowbotModel->repman_partner_signin($email);             
+        $this->session->set_userdata(array('logged_in' => TRUE, 'email' => $email));
+        $this->get_all_user_data($email);
+        $this->load->view('userdashboard', $this->view_data);                     
       } else {
         $this->form_validation->_error_array[] = "Authentication failure.";
         $this->load->view('userlogin');
@@ -138,16 +139,18 @@ class User extends Controller {
     }
   }
   
-  
   function confirmation_email($email, $confirmation_number) {
-    $this->email->initialize(array('mailtype' => 'html'));
-    
+    $this->email->initialize(array('mailtype' => 'html'));    
     $this->email->from($this->config->item('confirmation_email_from'), $this->config->item('confirmation_email_name'));
     $this->email->to($email);
     $this->email->subject($this->config->item('confirmation_email_subject').$confirmation_number);
     $this->email->message($this->config->item('confirmation_email_body'));
-    
     $this->email->send();
   }
+  
+  protected function get_all_user_data($email) {
+   $this->view_data['user'] = $this->UserModel->get_user_by_email($email);
+   $this->view_data['businesses'] = $this->BusinessModel->get_businesses_by_user($this->view_data['user']->id);
+  }  
 }
 ?>
