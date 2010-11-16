@@ -4,16 +4,9 @@ class UserModel extends Model {
 		parent::Model();
 	}
 	
-	function get_user_by_id($id) {
-		$query = $this->db->get_where('user', array('id' => $id), 1);
-		return $query->result();
-	}
-	
-	function get_user_by_email($email) {
-		$query = $this->db->get_where('user', array('email' => $email), 1);
-		return $query->result();
-	}
-	
+  /*
+   * SELECT Methods
+   */
 	function get_users() {
 		$query = $this->db->get('user');
 		return $query->result();
@@ -24,6 +17,35 @@ class UserModel extends Model {
     return $query->result();
   }
 	
+  function get_user_by_id($id) {
+    $query = $this->db->get_where('user', array('id' => $id), 1);
+    return $query->result();
+  }
+  
+  function get_user_by_email($email) {
+    $query = $this->db->get_where('user', array('email' => $email), 1);
+    if ($query->num_rows() > 0) {
+      $row = $query->row();
+      return $row;
+    } else {
+      return null;
+    }    
+  }
+  
+  function get_user_id($email) {
+    $this->db->select('id');
+    $query = $this->db->get_where('user', array('email' => $email), 1);    
+    if ($query->num_rows() > 0) {
+      $row = $query->row();
+      return $row->id;
+    } else {
+      return false;
+    }    
+  }
+  
+  /*
+   * Other CRUD Methods
+   */    
 	function add_user($data) {
 		$this->db->insert('user', $data);
 	}
@@ -37,7 +59,10 @@ class UserModel extends Model {
 		$this->db->where('id', $id);
 		$this->db->delete('user');
   }
-  
+    
+  /*
+   * Utility Functions
+   */  
   function user_exists($email) {
     $query = $this->db->get_where('user', array('email' => $email), 1);
     if($query->num_rows() > 0) {
@@ -45,7 +70,7 @@ class UserModel extends Model {
     } else {
       return false;
     }
-  }
+  }  
   
   function user_has_unregistered_business($email) {
     $query = $this->db->get_where('user', array('email' => $email,'registered_business' => 0));
