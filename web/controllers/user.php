@@ -120,6 +120,7 @@ class User extends Controller {
   }  
 
   function login() {
+    $this->session->sess_destroy();
     $this->form_validation->set_rules('email', 'Email', 'required');
     $this->form_validation->set_rules('password', 'Password', 'required');
     
@@ -129,14 +130,31 @@ class User extends Controller {
       $email = $this->input->post('email');
       $password = $this->input->post('password');      
       if($this->UserModel->authenticate_user($email, $password)) {
-        $this->session->set_userdata(array('logged_in' => TRUE, 'email' => $email));
-        $this->get_all_user_data($email);
-        $this->load->view('userdashboard', $this->view_data);                     
+        $this->session->set_userdata(array('logged_in' => TRUE, 'email' => $email, 'user_id' => $this->UserModel->get_user_id($email)));
+        redirect('user/dashboard');
       } else {
         $this->form_validation->_error_array[] = "Authentication failure.";
         $this->load->view('userlogin');
       }     
     }
+  }
+  
+  function dashboard() {
+    if($this->session->userdata('logged_in')) {
+      $this->view_data['success'] = $this->session->flashdata('success');
+      $this->get_all_user_data($this->session->userdata('email'));
+      $this->load->view('userdashboard', $this->view_data);
+    } else {
+      redirect('/user/login');
+    }    
+  }
+  
+  function partner_login() {
+    if($this->session->userdata('logged_in')) {
+      $this->YellowbotModel->repman_partner_signin($this->session->userdata('email'));
+    } else {
+      redirect('/user/login');
+    }    
   }
   
   function confirmation_email($email, $confirmation_number) {
@@ -151,6 +169,7 @@ class User extends Controller {
   protected function get_all_user_data($email) {
    $this->view_data['user'] = $this->UserModel->get_user_by_email($email);
    $this->view_data['businesses'] = $this->BusinessModel->get_businesses_by_user($this->view_data['user']->id);
+   $this->view_data['yb_locations'] = $this->YellowbotModel->repman_list_locations($email);
   }  
 }
 ?>
