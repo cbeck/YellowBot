@@ -19,7 +19,7 @@
       </thead>
       <tbody>
       <?php foreach($user_table as $user_row): ?>
-        <tr>
+        <tr class="<?php echo alternator('odd', 'even') ?>">
           <td><?= $user_row->name ?></td>
           <td><?= $user_row->email ?></td>
           <td><?= $user_row->address1.' '.$user_row->address2.'<br />'.$user_row->city.', '.$user_row->state.' '.$user_row->zip ?></td>
@@ -42,7 +42,7 @@
       </thead>
       <tbody>
       <?php foreach($user_unregistered_table as $user_row): ?>
-        <tr>
+        <tr class="<?php echo alternator('odd', 'even') ?>">
           <td><?= $user_row->name ?></td>
           <td><?= $user_row->email ?></td>
           <td><?= $user_row->address1.' '.$user_row->address2.'<br />'.$user_row->city.', '.$user_row->state.' '.$user_row->zip ?></td>
@@ -57,7 +57,7 @@
     <h2>Admins</h2>
     <table>
       <thead>
-        <tr>
+        <tr class="odd">
           <td>Username</td>
           <td>Action</td>
         </tr>

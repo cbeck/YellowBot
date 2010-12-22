@@ -45,13 +45,6 @@
       <?php endforeach; ?>
       </table>
 
-      <pre>
-        <?php
-          print_r($user);
-          print_r($businesses);
-          print_r($yb_locations);
-        ?>
-      </pre>
     </div>
     <?php include("includes/footer.inc"); ?>  
   </div>

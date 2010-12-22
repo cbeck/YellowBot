@@ -21,18 +21,6 @@ a:hover {text-decoration: underline;}
   color: #4769c5;
 }
 
-/* ADMIN TABLE STYLES */
-
-#main table tbody td, table thead td { padding: 7px; }
-#main table thead td { color: #ffffff; }
-#main table thead tr { background: #666666; border-bottom: solid 1px #333333; }
-#main table tbody td { border-bottom: solid 1px #c3c3c3; border-top: 1px solid #ffffff !important; background: url(../images/table_bg.jpg) bottom repeat-x #ffffff; }
-#main table tbody tr.odd td { border-bottom: solid 1px #75a9df; border-top: solid 1px #ffffff !important; background: url(../images/table_bg_odd.jpg) bottom repeat-x #dcecfc; margin-bottom: 1px; }
-#main table a { text-decoration: none; padding: 3px 10px; background: #D67200; border: 1px solid #ffffff; color: #ffffff; -moz-border-radius: 10px; border-radius: 10px; vertical-align: middle; }
-#main table a:hover { background: #E6A200; color: #ffffff; }
-
-/* END ADMIN TABLE STYLES */
-
 #header {
   background: #fff url(../images/bg-header.png) no-repeat top left;
   height: 84px;
@@ -66,11 +54,19 @@ h1#logo {
   float: right;
 }
 
+/* Rich's edited code below: */
+
 #splash {
-  background: #fff url(../images/bg-splash.jpg) no-repeat top left;
+  background: #fff url(../images/bg_splash_blank.jpg) no-repeat top left;
   height: 240px;
   padding: 20px 20px 0;
 }
+
+.slideshow {
+	margin: -12px 0 0 48px;
+}
+
+/* END Rich's edited code */
 
 #splash img {
   margin-left:20px;

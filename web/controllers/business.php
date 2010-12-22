@@ -10,6 +10,7 @@ class Business extends Controller {
     $this->load->model("PaymentModel");
     
     $this->load->helper(array('form', 'url'));
+    $this->load->helper('string');
     $this->load->library(array('form_validation', 'email'));
   }
   
