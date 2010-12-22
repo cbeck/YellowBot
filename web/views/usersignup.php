@@ -7,7 +7,18 @@
   <div id="canvas" class="container_12">
     <?php include("includes/header.inc"); ?>
     <div id="main" class="container_12">
-      <h2>Sign up</h2>
+      <div style="float: left;">
+  			<h2>Sign up $19.95 month</h2>
+  	  </div>
+  		<div style="float: right; vertical-align: middle; width: 405px;">
+  			<div style="float: left; padding-top: 20px;">
+  				<a href="/pages/features"><span style="font-size: 24px; font-weight: bold;">See Service Features >></span></a>
+  			</div>
+  			<div style="float: right;">
+  				<a href="/pages/features"><img src="/assets/images/Locationmonitor_Overview.jpg" height="100" border="0"></a>
+  			</div>
+  	  </div>
+  	  <br clear="all">
       <?= validation_errors(); ?>
       <?php $attributes = array('class' => 'jqtransform', 'id' => 'signup_form'); ?>
       <?= form_open('user/signup', $attributes); ?>
@@ -112,7 +123,7 @@
         <label>CVV:</label><input type="text" name="cc_cvv" value="" size="4"/>
         </div>
        </fieldset> 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" /> Billed at $59.85 per quarter 
       </div>
       <div class="grid_6 omega pad_top_20">
         <p>Your card will be billed quarterly in advance. You may cancel any time and delete this account. Your information is not stored by us but by our merchant processor, CyberSource, with high level security.</p>

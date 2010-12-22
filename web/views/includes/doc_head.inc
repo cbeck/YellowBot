@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="/assets/scripts/jqtransformplugin/jqtransform.css" type="text/css">
 <link rel="stylesheet" href="/assets/stylesheets/styles.css" type="text/css">
 
+<!--[if IE]>
+<link rel="stylesheet" href="/assets/stylesheets/styles_IE.css" type="text/css">
+<![endif]-->
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/scripts/jquery-ui-1.8.6.custom/js/jquery-ui-1.8.6.custom.min.js"></script>
 <script type="text/javascript" src="/assets/scripts/jqtransformplugin/jquery.jqtransform.js"></script>

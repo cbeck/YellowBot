@@ -16,8 +16,8 @@
   </div>
   <div id="registration" class="grid_3 omega">
     <ul class="navigation">
-      <li id="login"><a href="/user/login"><img src="/assets/images/btn-login.png"/></a></li>
-      <li id="sign_up"><a href="/user/signup"><img src="/assets/images/btn-sign-up.png"/></a></li>
+      <li id="login"><a href="https://www.locationmonitor.com/user/login"><img src="/assets/images/btn-login.png"/></a></li>
+      <li id="sign_up"><a href="https://www.locationmonitor.com/user/signup"><img src="/assets/images/btn-sign-up.png"/></a></li>
     </ul>
   </div>
 </div>

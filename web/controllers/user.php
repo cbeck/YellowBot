@@ -42,6 +42,7 @@ class User extends Controller {
       // setup payment request
       $name = explode(' ', $this->input->post('cc_name'), 2);
       $payment = array(
+        "UserGuid" => $this->getGuid(),
         "FirstName" => $name[0],
         "LastName" => $name[1],
         "Email" => $this->input->post('email'),
@@ -172,5 +173,52 @@ class User extends Controller {
    $this->view_data['businesses'] = $this->BusinessModel->get_businesses_by_user($this->view_data['user']->id);
    $this->view_data['yb_locations'] = $this->YellowbotModel->repman_list_locations($email);
   }  
+  
+  function allowChars($strValue, $strChars, $blnCaseSense)
+	{
+		$strResult = "";
+		if ($blnCaseSense)
+		  {
+		  for ($i = 0; $i < strlen($strValue); $i++)
+			{
+			$strChar = substr($strValue, $i, 1);
+			if (is_numeric(strpos($strChars, $strChar))) { $strResult .= $strChar; }
+			}
+		  }
+		else
+		  {
+		  $strChars = strtoupper($strChars);
+		  for ($i = 0; $i < strlen($strValue); $i++)
+			{
+			$strChar = substr($strValue, $i, 1);
+			if (is_numeric(strpos($strChars, strtoupper($strChar)))) { $strResult .= $strChar; }
+			}
+		  }
+		  return $strResult;
+	}
+	
+	
+	function getGuid()
+	{
+		#
+		# First try and use the Windows-specific guaranteed method
+		#
+		if (!$objGuid = @new COM("Scriptlet.TypeLib"))
+		{
+		#
+		# Couldn't create the object (non-Windows server) so use the other method
+		#
+		$strGuid = md5(uniqid(rand(), 1));
+		}
+		else
+		{
+		#
+		# Created the object so use the GUID property and strip unwanted chars
+		#
+		$strGuid = $this->allowChars(strtolower($objGuid->GUID()), "0123456789abcdef", false);
+		}
+		$objGuid = null;
+		return $strGuid;
+	}
 }
 ?>
