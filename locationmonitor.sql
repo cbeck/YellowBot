@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 07, 2010 at 08:33 PM
+-- Generation Time: Dec 22, 2010 at 02:03 PM
 -- Server version: 5.0.70
 -- PHP Version: 5.2.9-pl2-gentoo
 
@@ -35,6 +35,28 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `business`
+--
+
+CREATE TABLE IF NOT EXISTS `business` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `name` tinytext NOT NULL,
+  `address1` tinytext NOT NULL,
+  `address2` tinytext,
+  `city` tinytext NOT NULL,
+  `state` varchar(2) NOT NULL,
+  `zip` varchar(5) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `payment_key` text,
+  `registered_business` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=71 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -62,4 +84,4 @@ CREATE TABLE IF NOT EXISTS `user` (
   `recurring_frequency` int(11) NOT NULL,
   `registered_business` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=67 ;
