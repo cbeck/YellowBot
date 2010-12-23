@@ -7,6 +7,11 @@ a:hover {text-decoration: underline;}
   text-align: center;
 }
 
+.right {
+  float: right;
+  text-align: right;
+}
+
 .pad_top_20 { padding-top: 20px;}
 
 #canvas {
@@ -116,6 +121,17 @@ h1#logo {
 #home_content h2 {
   font: normal normal normal 1.75em/2em Arial, sans-serif;
   color: #011398;
+}
+
+#dash_titles {
+  margin-top: 0;
+  font: normal small-caps normal 1em/1.5em Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+h2.no_margin {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .content_box {

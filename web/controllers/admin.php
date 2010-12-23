@@ -6,8 +6,7 @@ class Admin extends Controller {
     parent::Controller();
 	  $this->load->model("AdminModel");
     $this->load->model("UserModel");
-    $this->load->helper(array('form', 'url'));
-    $this->load->helper('string');
+    $this->load->helper(array('form', 'url', 'string'));
     $this->load->library('form_validation');
     
     $this->view_data = array(

@@ -1,22 +1,23 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 //Yellowbot API Configuration
-$config['api_url'] = "http://rep.ubl.org";
+//$config['api_url'] = "http://rep.locationmonitor.com";
 //$config['api_key'] = "59667cf953f4c37f0d760c003a287972";
 //$config['api_secret'] = "f89d48e031440891";
 
-//$config['api_url'] = "http://rep.locationmonitor.com";
+$config['api_url'] = "http://rep.locationmonitor.com";
 $config['api_key'] = "c7cbf3afd2cedd3c69cd091a8f2e7347";
 $config['api_secret'] = "66f4cdbbd65cb13a";
 
 //Payment Processing Service URL
-$config['payment_service_url'] =  "https://qa.ubl.org/payment.svc";
-//$config['payment_service_url'] =  "https://www.ubl.org/payment.svc";
+//$config['payment_service_url'] =  "https://qa.ubl.org/payment.svc";
+$config['payment_service_url'] =  "https://www.ubl.org/payment.svc";
 
 //Default Price
-$config['default_price'] = '19.95';
+$config['default_price'] = '59.85';
 
 //Default Frequency
-$config['default_frequency'] = "12";
+$config['default_frequency'] = "4";
 
 //Unregistered business message
 $config['unregistered_business_label'] = "<p>Thank you for your subscription to LocationMonitor.com. You are seeing this page because the business
@@ -54,4 +55,5 @@ we will only send one alert a day so your email system does not get overloaded.<
 
 If you have any questions, please email contact@locationmonitor.com.<br />
 We thank you for your subscription.";
+
 

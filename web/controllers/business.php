@@ -9,8 +9,7 @@ class Business extends Controller {
     $this->load->model("YellowbotModel");
     $this->load->model("PaymentModel");
     
-    $this->load->helper(array('form', 'url'));
-    $this->load->helper('string');
+    $this->load->helper(array('form', 'url', 'string'));
     $this->load->library(array('form_validation', 'email'));
   }
   

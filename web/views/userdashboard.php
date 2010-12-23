@@ -7,44 +7,54 @@
   <div id="canvas" class="container_12">
     <?php include("includes/header.inc"); ?>
     <div id="main" class="container_12">
-      <p><?= $success = (isset($success))? $success: ''; ?></p> 
-      
-      <ul>
-        <li>Name: <?= $user->name ?></li>
-        <li>Business Name: <?= $user->business_name ?></li>
-        <li>Phone: <?= $user->phone ?></li>
-        <li>Email: <?= $user->email ?></li>
-        <li><a href="/user/partner_login">Login to YB</a></li>
-        <li><a href="/business/add">Add a new business</a></li>
-      </ul>
-      
-      <h3>Additional Businesses</h3>
-      <table width="100%">
-      <?php foreach($businesses as $business): ?>
-        <tr>
-          <td><?= $business->name ?></td>
-          <td><?= $business->address1.'<br />'.$business->address2 ?></td>
-          <td><?= $business->city ?></td>
-          <td><?= $business->state ?></td>
-          <td><?= $business->zip ?></td>
-          <td><?= $business->phone ?></td>
-        </tr>
-      <?php endforeach; ?>
-      </table>
+      <div class="grid_12 alpha omega">
+      <?= $success = (isset($success))? $success: ''; ?>
+      <h2 class="no_margin"><?= $user->name ?>&apos;s Dashboard</h2>
+      <div id="dash_titles"><?= $user->business_name ?> | <?= $user->phone ?> | <?= $user->email ?></div>
+        <div class="right"><a href="/business/add"><img src="/assets/images/add_business_btn.png"/></a></div>
+        <h3>Additional Businesses</h3>
+        <table width="100%">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Address</td>
+              <td>Phone</td>
+              <td>&nbsp;</td>
+            </tr>
+          </thead>
+          <tbody>
+        <?php foreach($businesses as $business): ?>
+          <tr class="<?php echo alternator('odd', 'even') ?>">
+            <td><?= $business->name ?></td>
+            <td><?= $business->address1 ?>, <?= $business->city ?>, <?= $business->state ?> <?= $business->zip ?></td>
+            <td><?= $business->phone ?></td>
+            <td class="right"><a href="/user/partner_login">Manage Reputation</a></td>
+          </tr>
+        <?php endforeach; ?>
+          </tbody>
+        </table>
 
-      <h3>Registered Businesses</h3>
-      <table width="100%">
-      <?php foreach($yb_locations['locations'] as $yb_business): ?>
-        <tr>
-          <td><?= $yb_business['name'] ?></td>
-          <td><?= $yb_business['address'] ?></td>
-          <td><?= $yb_business['city'] ?></td>
-          <td><?= $yb_business['state'] ?></td>
-          <td><?= $yb_business['zip'] ?></td>
-        </tr>
-      <?php endforeach; ?>
-      </table>
-
+        <h3>Registered Businesses</h3>
+        <table width="100%">
+         <thead>
+              <tr>
+                <td>Name</td>
+                <td>Address</td>
+                <td>&nbsp;</td>
+              </tr>
+            </thead>
+            <tbody>
+        <?php foreach($yb_locations['locations'] as $yb_business): ?>
+          <tr class="<?php echo alternator('odd', 'even') ?>">
+            <td><?= $yb_business['name'] ?></td>
+            <td><?= $yb_business['address'] ?>, <?= $yb_business['city'] ?>, <?= $yb_business['state'] ?> <?= $yb_business['zip'] ?></td>
+            <td class="right"><a href="/user/partner_login">Manage Reputation</a></td>
+          </tr>
+        <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <div class="clear"></div>
     </div>
     <?php include("includes/footer.inc"); ?>  
   </div>
